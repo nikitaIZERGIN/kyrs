@@ -54,11 +54,11 @@ https://github.com/nikitaIZERGIN/kyrs
 ![UseCase диаграмма](./img/UseCase.PNG)
 
 ### Диаграмма ER:
-![ER диаграмма](./img/ERD.PNG)
+![ER диаграмма](./img/ERD.png)
 
 
 ### Диаграмма ER:
-![Сщстояний диаграмма](./img/Состояний.png)
+![Сщстояний диаграмма](./img/Состояний.PNG)
 
 
 
