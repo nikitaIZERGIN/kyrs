@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="foreignschool_kpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="RoleNikit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="UserNikit" Relationship="Self.FK_UserNikit_RoleNikit" FromRole="RoleNikit" ToRole="UserNikit" />
+  </EntityType>
+  <EntityType Name="ServiceNikita">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserServiceNikit" Relationship="Self.FK_UserServiceNikit_ServiceNikita" FromRole="ServiceNikita" ToRole="UserServiceNikit" />
+  </EntityType>
+  <EntityType Name="UserNikit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" />
+    <Property Name="BirthDate" Type="DateTime" Precision="0" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Education" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RoleNikit" Relationship="Self.FK_UserNikit_RoleNikit" FromRole="UserNikit" ToRole="RoleNikit" />
+    <NavigationProperty Name="UserServiceNikit" Relationship="Self.FK_UserServiceNikit_UserNikit" FromRole="UserNikit" ToRole="UserServiceNikit" />
+  </EntityType>
+  <EntityType Name="UserServiceNikit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+    <Property Name="UserId" Nullable="false" Type="Int32" />
+    <Property Name="ServiceId" Nullable="false" Type="Int32" />
+    <NavigationProperty Name="ServiceNikita" Relationship="Self.FK_UserServiceNikit_ServiceNikita" FromRole="UserServiceNikit" ToRole="ServiceNikita" />
+    <NavigationProperty Name="UserNikit" Relationship="Self.FK_UserServiceNikit_UserNikit" FromRole="UserServiceNikit" ToRole="UserNikit" />
+  </EntityType>
+  <Association Name="FK_UserNikit_RoleNikit">
+    <End Role="RoleNikit" Type="Self.RoleNikit" Multiplicity="0..1" />
+    <End Role="UserNikit" Type="Self.UserNikit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleNikit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserNikit">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserServiceNikit_ServiceNikita">
+    <End Type="Self.ServiceNikita" Multiplicity="1" Role="ServiceNikita" />
+    <End Type="Self.UserServiceNikit" Multiplicity="*" Role="UserServiceNikit" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceNikita">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserServiceNikit">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserServiceNikit_UserNikit">
+    <End Type="Self.UserNikit" Multiplicity="1" Role="UserNikit" />
+    <End Type="Self.UserServiceNikit" Multiplicity="*" Role="UserServiceNikit" />
+    <ReferentialConstraint>
+      <Principal Role="UserNikit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserServiceNikit">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="foreignschool_kpEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="RoleNikit" EntityType="Self.RoleNikit" />
+    <EntitySet Name="ServiceNikita" EntityType="Self.ServiceNikita" />
+    <EntitySet Name="UserNikit" EntityType="Self.UserNikit" />
+    <EntitySet Name="UserServiceNikit" EntityType="Self.UserServiceNikit" />
+    <AssociationSet Name="FK_UserNikit_RoleNikit" Association="Self.FK_UserNikit_RoleNikit">
+      <End Role="RoleNikit" EntitySet="RoleNikit" />
+      <End Role="UserNikit" EntitySet="UserNikit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserServiceNikit_ServiceNikita" Association="Self.FK_UserServiceNikit_ServiceNikita">
+      <End EntitySet="ServiceNikita" Role="ServiceNikita" />
+      <End EntitySet="UserServiceNikit" Role="UserServiceNikit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserServiceNikit_UserNikit" Association="Self.FK_UserServiceNikit_UserNikit">
+      <End EntitySet="UserNikit" Role="UserNikit" />
+      <End EntitySet="UserServiceNikit" Role="UserServiceNikit" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
