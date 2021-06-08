@@ -21,6 +21,25 @@ namespace IzerginKurs.windows
     /// </summary>
     public partial class UserWindowxaml : Window, INotifyPropertyChanged
     {
+
+        public List<string> ListEducaitonValue
+        {
+            get
+            {
+                return ListEducation
+                    .Select(item => item.Item1)
+                    .ToList();
+            }
+        }
+
+        private List<Tuple<string, string>> ListEducation =
+            new List<Tuple<string, string>>()
+            {
+                Tuple.Create("Среднее","Среднее"),
+         Tuple.Create("Высшее","Высшее"),
+         Tuple.Create("Среднее Специальное","Среднее Специальное"),
+
+            };
         public UserWindowxaml(UserNikit user)
         {
             InitializeComponent();

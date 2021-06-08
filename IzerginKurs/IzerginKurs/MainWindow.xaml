@@ -28,6 +28,8 @@
         VerticalAlignment="Top"/>
         <StackPanel Grid.Column="0"
                     VerticalAlignment="Bottom">
+            <Button  x:Name="DeleteButton" Click="DeleteButton_Click"  Content="Удалить" ></Button>
+            <Button   Content="Редактировать"  Click="EditButton_Click"  x:Name="EditButton" ></Button>
             <Button Content="Добавить"
                     x:Name="AddService"
                     Click="AddService_Click"
@@ -126,8 +128,7 @@
                         Height="64"
                         Source="{Binding Path=ImagePreview}" />
 
-                                <Button HorizontalAlignment="Right" Margin="0 0 50 0" Height="30"  x:Name="DeleteButton" Click="DeleteButton_Click"  Width="50" Content="Удалить" Grid.Column="1"></Button>
-                                <Button  HorizontalAlignment="Right"   Margin="0 0 0 0" Height="30" Width="50" Content="Редактировать"  Click="EditButton_Click" Grid.Column="1" x:Name="EditButton" ></Button>
+                               
 
                                 <TextBlock 
                         Text="{Binding Price}" 

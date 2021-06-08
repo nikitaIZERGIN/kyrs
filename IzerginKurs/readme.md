@@ -19,7 +19,7 @@
     <td style="text-align: right; border: none; height: 20em;">
         <div style="float: right;" align="left">
             <b>Разработал</b>: <br/>
-            Изергин Никита Рудольфович <br/>
+            Галимулин Рамиль Тахирович <br/>
             <b>Проверил</b>: <br/>
             Колесников Евгений Иванович
         </div>
@@ -34,7 +34,7 @@
 
 <div style="page-break-after: always;"></div>
 
-https://github.com/nikitaIZERGIN/kyrs
+https://github.com/VadimKravcov/Kursach.
 
 # Содержание
 
@@ -45,20 +45,17 @@ https://github.com/nikitaIZERGIN/kyrs
 # Теоретическая-часть
 ## Диаграммы
 
-### Предметная область  Школа иностранных языков. Подсистема работы с сотрудниками.
+### Предметная область  Школа иностранных-языков. Подсистема работы с сотрудниками.
 
 
-
-
-### Диаграмма UseCase:
-![UseCase диаграмма](./img/UseCase.PNG)
+### Диаграмма Use Case:
+![ER диаграмма](./img/UseCase.png) 
 
 ### Диаграмма ER:
-![ER диаграмма](./img/ERD.png)
+![ER диаграмма](./img/ERD.png) 
+### Диаграмма Состояний:
+![ER диаграмма](./img/Состояний.PNG) 
 
-
-### Диаграмма ER:
-![Сщстояний диаграмма](./img/Состояний.PNG)
 
 
 
@@ -73,24 +70,24 @@ https://github.com/nikitaIZERGIN/kyrs
 
 
 ```xml
-<Window x:Class="IzerginKurs.MainWindow"
+<Window x:Class="KusrGalimulin.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:IzerginKurs"
+        xmlns:local="clr-namespace:KusrGalimulin"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="LightBlue"/>
-            <Setter Property="BorderBrush"  Value="DarkGray"/>
-            <Setter Property="FontFamily"  Value="Segoe Black"/>
-            <Setter Property="Foreground"  Value="Black"/>
+   <Window.Resources>
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="Aqua"/>
+        <Setter Property="BorderBrush"  Value="DarkGray"/>
+        <Setter Property="FontFamily"  Value="Segoe Black"/>
+        <Setter Property="Foreground"  Value="Black"/>
 
 
 
-        </Style>
+    </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -99,7 +96,7 @@ https://github.com/nikitaIZERGIN/kyrs
         </Grid.ColumnDefinitions>
         <Image 
         Margin="5"
-        Source="./img/logo.jpg" 
+        Source="./img/car-service.png" 
         VerticalAlignment="Top"/>
         <StackPanel Grid.Column="0"
                     VerticalAlignment="Bottom">
@@ -112,7 +109,6 @@ https://github.com/nikitaIZERGIN/kyrs
                     x:Name="ServiceShow"
                     Margin="0 0 0 0"
                     Click="ServiceShow_Click"
-                    
                    
                    ></Button>
             <Button Content="Выход"
@@ -201,11 +197,11 @@ https://github.com/nikitaIZERGIN/kyrs
                         Height="64"
                         Source="{Binding Path=ImagePreview}" />
 
-                                <Button HorizontalAlignment="Right" Margin="0 0 50 0" Height="30"  x:Name="DeleteButton" Click="DeleteButton_Click"  Width="50" Content="Удалить" Grid.Column="1"></Button>
-                                <Button  HorizontalAlignment="Right"   Margin="0 0 0 0" Height="30" Width="50" Content="Редактировать"  Click="EditButton_Click" Grid.Column="1" x:Name="EditButton" ></Button>
+                                <Button HorizontalAlignment="Right" Margin="0 0 50 0" Height="30"  x:Name="DeleteButton"  Width="50" Content="Удалить" Grid.Column="1"></Button>
+                                <Button  HorizontalAlignment="Right"   Margin="0 0 0 0" Height="30" Width="50" Content="Редактировать" Click="EditButton_Click" Grid.Column="1" x:Name="EditButton" ></Button>
 
                                 <TextBlock 
-                        Text="{Binding Price}" 
+                        Text="{Binding Salary}" 
                         Grid.Column="2" 
                         HorizontalAlignment="Right" 
                         Margin="10"/>
@@ -226,11 +222,11 @@ https://github.com/nikitaIZERGIN/kyrs
                                         <TextBlock 
                                 Text=" | "/>
                                         <TextBlock 
-                                Text="{Binding RoleNikit.Title}"/>
+                                Text="{Binding Role1.Title}"/>
                                     </StackPanel>
 
                                     <TextBlock 
-                            Text="Образование:" 
+                            Text="{Binding Achievements}" 
                             Grid.Row="1"/>
                                     <TextBlock 
                             Text="{Binding Education}" 
@@ -251,7 +247,7 @@ https://github.com/nikitaIZERGIN/kyrs
                             Value="True">
                                 <Setter
                                 Property="Background"
-                                Value="LightGreen"/>
+                                Value="LightCoral"/>
                             </DataTrigger>
                         </Style.Triggers>
                         <Setter 
@@ -270,51 +266,52 @@ https://github.com/nikitaIZERGIN/kyrs
     </Grid>
 </Window>
 
-
 #### Пример Логики главной страницы:
 
 ```cs
-namespace IzerginKurs
+namespace KusrGalimulin
 {
-    public partial class ServiceNikita
+    public partial class Service
     {
         public Uri ImagePreviewService
         {
             get
             {
-                var imageName = System.IO.Path.Combine(Environment.CurrentDirectory, Photo ?? "");
+                var imageName = System.IO.Path.Combine(Environment.CurrentDirectory, фото ?? "");
                 return System.IO.File.Exists(imageName) ? new Uri(imageName) : new Uri("pack://application:,,,/img/picture.jpg");
             }
         }
     }
-    public partial class UserNikit
+    public partial class User
     {
         public Boolean MinSalary
         {
             get
             {
-                return Price > 30000;
+                return Salary < 40000;
             }
         }
         public string Users
         {
+
             get
+
             {
-                return FirstName + "" + LastName + "" + MiddleName;
-            }
+                return LastName + "" + FirstName + "" + MiddleName;
+            } 
         }
         public double DiscountFloat
         {
             get
             {
-                return Convert.ToSingle(Price);
+                return Convert.ToSingle(Salary);
             }
         }
         public Uri ImagePreview
         {
             get
             {
-                var imageName = System.IO.Path.Combine(Environment.CurrentDirectory, Photo ?? "");
+                var imageName = System.IO.Path.Combine(Environment.CurrentDirectory, img ?? "");
                 return System.IO.File.Exists(imageName) ? new Uri(imageName) : new Uri("pack://application:,,,/img/picture.jpg");
             }
         }
@@ -328,13 +325,13 @@ namespace IzerginKurs
         {
             InitializeComponent();
             this.DataContext = this;
-            UserList = Core.DB.UserNikit.ToList();
+            UserList = Core1.DB.User.ToList();
         }
-        private List<UserNikit> _UserList;
+        private List<User> _UserList;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public List<UserNikit> UserList
+        public List<User> UserList
         {
             get
             {
@@ -343,8 +340,7 @@ namespace IzerginKurs
                 var FilteredServiceList = _UserList.FindAll(item =>
                    item.DiscountFloat >= CurrentDiscountFilter.Item1 &&
                      item.DiscountFloat < CurrentDiscountFilter.Item2
-                     
-                     );
+                     && item.Role1.id == 2);
 
                 if (SearchFilter != "")
                     FilteredServiceList = FilteredServiceList.Where(item =>
@@ -354,14 +350,14 @@ namespace IzerginKurs
                 if (SortPriceAscending)
                 {
 
-                    return FilteredServiceList.OrderBy(item => (item.Price))
+                    return FilteredServiceList.OrderBy(item => (item.Salary))
                 .ToList();
 
                 }
                 else
                 {
 
-                    return FilteredServiceList.OrderByDescending(item => (item.Price))
+                    return FilteredServiceList.OrderByDescending(item => (item.Salary))
                 .ToList();
                 }
             }
@@ -396,7 +392,12 @@ namespace IzerginKurs
             SortPriceAscending = (sender as RadioButton).Tag.ToString() == "1";
         }
 
-       
+        private void ServiceShow_Click(object sender, RoutedEventArgs e)
+        {
+            var isServiceShow = new windows.ServiceWidnow();
+            isServiceShow.ShowDialog();
+        }
+
         public List<string> FilterByDiscountNamesList
         {
             get
@@ -480,19 +481,19 @@ namespace IzerginKurs
         {
             get
             {
-                return _UserList.Count;
+                return _UserList.FindAll(item => item.Role1.id == 2).Count;
             }
         }
         private void AddService_Click(object sender, RoutedEventArgs e)
         {
             //  создаем новую услугу
-            var NewService = new UserNikit();
+            var NewService = new User();
 
-            var NewServiceWindow = new windows.UserWindowxaml(NewService);
+            var NewServiceWindow = new windows.UserWindow(NewService);
             if ((bool)NewServiceWindow.ShowDialog())
             {
                 //список услуг нужно перечитать с сервера
-                UserList = Core.DB.UserNikit.ToList();
+                UserList = Core1.DB.User.ToList();
                 PropertyChanged(this, new PropertyChangedEventArgs("UserList"));
                 PropertyChanged(this, new PropertyChangedEventArgs("FilteredProductsCount"));
                 PropertyChanged(this, new PropertyChangedEventArgs("ProductsCount"));
@@ -500,26 +501,23 @@ namespace IzerginKurs
         }
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-          
-            var item = ProductListView.SelectedItem as UserNikit;
-            var item2= ProductListView.ItemsSource as UserNikit;
-
-
-          
-
-            Core.DB.UserNikit.Remove(item);
-
-            // сохраняем изменения
-            Core.DB.SaveChanges();
+           
+            var item = ProductListView.SelectedItem as User;
 
             
-            UserList = Core.DB.UserNikit.ToList();
+            Core1.DB.User.Remove(item);
+
+            // сохраняем изменения
+            Core1.DB.SaveChanges();
+
+            // перечитываем изменившийся список, не забывая в сеттере вызвать PropertyChanged
+            UserList = Core1.DB.User.ToList();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var SelectedService = ProductListView.SelectedItem as UserNikit;
-            var EditServiceWindow = new windows.UserWindowxaml(SelectedService);
+            var SelectedService = ProductListView.SelectedItem as User;
+            var EditServiceWindow = new windows.UserWindow(SelectedService);
             if ((bool)EditServiceWindow.ShowDialog())
             {
                 // при успешном завершении не забываем перерисовать список услуг
@@ -528,11 +526,9 @@ namespace IzerginKurs
             }
         }
 
-        private void ServiceShow_Click(object sender, RoutedEventArgs e)
-        {
-            var openServiceNikit = new windows.ServiceWindow();
-            openServiceNikit.ShowDialog();
-        }
+
+
+
     }
 }
 
@@ -541,7 +537,8 @@ namespace IzerginKurs
 
 #### Прмер кода разметки страницы редактирования и добавления услуг:
 ```xml
-     <Grid>
+      Title="UserWindow" Height="650" Width="800">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition  Width="*"/>
@@ -566,9 +563,11 @@ namespace IzerginKurs
             <Label Content="Отчество"/>
             <TextBox Text="{Binding CurrentUser.MiddleName}"/>
             <Label Content="Зарплата"/>
-            <TextBox Text="{Binding CurrentUser.Price}"/>
-           
-            
+            <TextBox Text="{Binding CurrentUser.Salary}"/>
+            <Label Content="Рейтинг"/>
+            <TextBox Text="{Binding CurrentUser.Rate}"/>
+            <Label Content="Достижения"/>
+            <TextBox Text="{Binding CurrentUser.Achievements}"/>
             <Label Content="Образование"/>
             <TextBox Text="{Binding CurrentUser.Education}"/>
             <Label Content="Телефон"/>
@@ -576,8 +575,8 @@ namespace IzerginKurs
             <Label Content="Email"/>
             <TextBox Text="{Binding CurrentUser.Email}"/>
             <Label Content="Год рождения"/>
-            <TextBox Text="{Binding CurrentUser.BirthDate}"/>
-
+            <TextBox Text="{Binding CurrentUser.BirthName}"/>
+            
 
 
 
@@ -590,25 +589,26 @@ namespace IzerginKurs
 #### Пример Логики страницы редактирования заказов:
 
 ```cs
-namespace IzerginKurs.windows
+namespace KusrGalimulin.windows
 {
     /// <summary>
-    /// Логика взаимодействия для UserWindowxaml.xaml
+    /// Логика взаимодействия для UserWindow.xaml
     /// </summary>
-    public partial class UserWindowxaml : Window, INotifyPropertyChanged
+    public partial class UserWindow : Window, INotifyPropertyChanged
     {
-        public UserWindowxaml(UserNikit user)
+        public UserWindow(User user)
         {
             InitializeComponent();
             this.DataContext = this;
             CurrentUser = user;
+
         }
-        public UserNikit CurrentUser { get; set; }
+        public User CurrentUser { get; set; }
         public string WindowName
         {
             get
             {
-                return CurrentUser.Id == 0 ? "Новая услуга" : "Редоктирование улсгуи";
+                return CurrentUser.id == 0 ? "Новая услуга" : "Редоктирование улсгуи";
             }
         }
 
@@ -625,7 +625,7 @@ namespace IzerginKurs.windows
             {
                 // перед присвоением пути к картинке обрезаем начало строки, т.к. диалог возвращает полный путь
                 // (тут конечно еще надо проверить есть ли в начале Environment.CurrentDirectory)
-                CurrentUser.Photo = GetImageDialog.FileName.Substring(Environment.CurrentDirectory.Length + 1);
+                CurrentUser.img = GetImageDialog.FileName.Substring(Environment.CurrentDirectory.Length + 1);
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("CurrentUser"));
@@ -634,25 +634,29 @@ namespace IzerginKurs.windows
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentUser.Price <= 0 || CurrentUser.Price > 1000000)
+            if (CurrentUser.Salary <= 0 || CurrentUser.Salary > 1000000)
             {
                 MessageBox.Show("Зарплата не может быть меньше или равно нулю или больше 1000000");
                 return;
             }
 
-           
+            if (CurrentUser.Rate < 0 || CurrentUser.Rate > 10)
+            {
+                MessageBox.Show("Рейтинг долджен быть от 1 до 10");
+                return;
+            }
 
 
 
-           
+            CurrentUser.Role = 2;
             // если запись новая, то добавляем ее в список
-            if (CurrentUser.Id == 0)
-                Core.DB.UserNikit.Add(CurrentUser);
+            if (CurrentUser.id == 0)
+                Core1.DB.User.Add(CurrentUser);
 
             // сохранение в БД
             try
             {
-                Core.DB.SaveChanges();
+                Core1.DB.SaveChanges();
             }
             catch
             {
@@ -663,23 +667,23 @@ namespace IzerginKurs.windows
         {
             get
             {
-                if (CurrentUser.Id == 0) return "collapsed";
+                if (CurrentUser.id == 0) return "collapsed";
                 return "visible";
 
 
 
             }
         }
-    }
+    
 }
-
+}
 
 ```
 # Тестировние
 ## Создание библиотеки классов и Юнит тестов
 ### Библиотека классов
 ```cs
-namespace IzerginKursTest
+namespace GalimulinKursTest
 {
     public class Class1
     {
@@ -688,16 +692,24 @@ namespace IzerginKursTest
             int sum = ((price / 100) * 15) * price;
             return sum;
         }
-        public string PriceNotNull(int salary)
+        public string SalaryNotNull(int salary)
         {
-            if (Price <= 0 || Price > 100000)
+            if (Salary <= 0 || Salary > 100000)
             {
-                return "Зарплата не может быть меньше или равана нулю  или больше 100000";
+                return "цена не может быть меньше или равана нулю  или больше 100000";
             }
             else
                 return "Все правильно";
          }
-        
+          public string SalaryNotNull(int salary)
+        {
+            if (Rate <= 0 || Rate > 10)
+            {
+                return "рейтинг не может быть меньше или больше 10";
+            }
+            else
+                return "Все правильно";
+         }
          
 
     }
@@ -728,7 +740,11 @@ namespace UniTestKurs
         {
             Assert.AreEqual(disk__price.SalaryNotNull(-2), "цена не может быть меньше или равана нулю  или больше 100000");
         }
-       
+        [TestMethod]
+        public void RateNotNull()
+        {
+            Assert.AreEqual(disk__price.RateNotNull(22), "рейтинг не может быть меньше или больше 10");
+        }
         
     }
 }
