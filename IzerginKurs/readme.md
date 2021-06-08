@@ -49,12 +49,12 @@ https://github.com/VadimKravcov/Kursach.
 
 
 ### Диаграмма Use Case:
-![ER диаграмма](./img/UseCase.png) 
+![Use Case диаграмма](./img/UseCase.PNG) 
 
 ### Диаграмма ER:
 ![ER диаграмма](./img/ERD.png) 
 ### Диаграмма Состояний:
-![ER диаграмма](./img/Состояний.PNG) 
+![Состояний диаграмма](./img/Состояний.PNG) 
 
 
 
