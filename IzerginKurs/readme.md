@@ -19,7 +19,7 @@
     <td style="text-align: right; border: none; height: 20em;">
         <div style="float: right;" align="left">
             <b>Разработал</b>: <br/>
-            Галимулин Рамиль Тахирович <br/>
+           Изергин Никта Рудольфович <br/>
             <b>Проверил</b>: <br/>
             Колесников Евгений Иванович
         </div>
@@ -34,7 +34,7 @@
 
 <div style="page-break-after: always;"></div>
 
-https://github.com/VadimKravcov/Kursach.
+https://github.com/nikitaIZERGIN/kyrs
 
 # Содержание
 
