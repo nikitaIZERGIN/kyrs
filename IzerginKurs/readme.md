@@ -49,7 +49,7 @@ https://github.com/nikitaIZERGIN/kyrs
 
 
 ### Диаграмма Use Case:
-![ER диаграмма](./img/UseCase.png) 
+![ER диаграмма](./img/UseCase.PNG) 
 
 ### Диаграмма ER:
 ![ER диаграмма](./img/ERD.png) 
