@@ -19,7 +19,7 @@
     <td style="text-align: right; border: none; height: 20em;">
         <div style="float: right;" align="left">
             <b>Разработал</b>: <br/>
-           Изергин Никта Рудольфович <br/>
+            Изергин Никита Рудольфович <br/>
             <b>Проверил</b>: <br/>
             Колесников Евгений Иванович
         </div>
@@ -49,12 +49,12 @@ https://github.com/nikitaIZERGIN/kyrs
 
 
 ### Диаграмма Use Case:
-![Use Case диаграмма](./img/UseCase.PNG) 
+![ER диаграмма](./img/UseCase.png) 
 
 ### Диаграмма ER:
 ![ER диаграмма](./img/ERD.png) 
 ### Диаграмма Состояний:
-![Состояний диаграмма](./img/Состояний.PNG) 
+![ER диаграмма](./img/Состояний.PNG) 
 
 
 

@@ -242,10 +242,15 @@ namespace IzerginKurs
         {
           
             var item = ProductListView.SelectedItem as UserNikit;
-            var item2= ProductListView.ItemsSource as UserNikit;
+            if (item == null)
+            {
+                MessageBox.Show("Не выбран клиент");
+                return;
+            }
 
 
-          
+
+
 
             Core.DB.UserNikit.Remove(item);
 
