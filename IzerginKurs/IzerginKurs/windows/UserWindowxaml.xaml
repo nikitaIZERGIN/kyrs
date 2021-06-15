@@ -15,8 +15,8 @@
         <Image 
                 Grid.Column="0"
             VerticalAlignment="Top"
-           MaxHeight="200" 
-           MaxWidth="200" 
+          MaxWidth="200"
+            MaxHeight="200"
            Source="{Binding CurrentUser.ImagePreview}" />
 
         <StackPanel Grid.Column="1" Orientation="Horizontal" Visibility="{Binding NewProduct}">
@@ -51,8 +51,8 @@
 
 
 
-            <Button Width="100" Margin="5" HorizontalAlignment="Left" Click="GetImageButton_Click">Выбор картинки</Button>
-            <Button Width="100" Margin="5" HorizontalAlignment="Left" Click="SaveButton_Click">Сохранить</Button>
+            <Button Width="800" Margin="5" HorizontalAlignment="Left" Click="GetImageButton_Click">Выбор картинки</Button>
+            <Button Width="800" Margin="5" HorizontalAlignment="Left" Click="SaveButton_Click">Сохранить</Button>
         </StackPanel>
     </Grid>
 </Window>

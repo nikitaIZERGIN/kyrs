@@ -16,7 +16,7 @@
     </td>
   </tr>
   <tr>
-    <td style="text-align: right; border: none; height: 20em;">
+     <td style="text-align: right; border: none; height: 20em;">
         <div style="float: right;" align="left">
             <b>Разработал</b>: <br/>
             Изергин Никита Рудольфович <br/>
@@ -69,25 +69,26 @@ https://github.com/nikitaIZERGIN/kyrs
 #### Прмер кода разметки страницы:
 
 
+
 ```xml
-<Window x:Class="KusrGalimulin.MainWindow"
+<Window x:Class="IzerginKurs.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:KusrGalimulin"
+        xmlns:local="clr-namespace:IzerginKurs"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-   <Window.Resources>
-    <Style TargetType="Button">
-        <Setter Property="Background" Value="Aqua"/>
-        <Setter Property="BorderBrush"  Value="DarkGray"/>
-        <Setter Property="FontFamily"  Value="Segoe Black"/>
-        <Setter Property="Foreground"  Value="Black"/>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="BorderBrush"  Value="DarkGray"/>
+            <Setter Property="FontFamily"  Value="Segoe Black"/>
+            <Setter Property="Foreground"  Value="Black"/>
 
 
 
-    </Style>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -96,10 +97,12 @@ https://github.com/nikitaIZERGIN/kyrs
         </Grid.ColumnDefinitions>
         <Image 
         Margin="5"
-        Source="./img/car-service.png" 
+        Source="./img/logo.jpg" 
         VerticalAlignment="Top"/>
         <StackPanel Grid.Column="0"
                     VerticalAlignment="Bottom">
+            <Button  x:Name="DeleteButton" Click="DeleteButton_Click"  Content="Удалить" ></Button>
+            <Button   Content="Редактировать"  Click="EditButton_Click"  x:Name="EditButton" ></Button>
             <Button Content="Добавить"
                     x:Name="AddService"
                     Click="AddService_Click"
@@ -109,6 +112,7 @@ https://github.com/nikitaIZERGIN/kyrs
                     x:Name="ServiceShow"
                     Margin="0 0 0 0"
                     Click="ServiceShow_Click"
+                    
                    
                    ></Button>
             <Button Content="Выход"
@@ -197,11 +201,10 @@ https://github.com/nikitaIZERGIN/kyrs
                         Height="64"
                         Source="{Binding Path=ImagePreview}" />
 
-                                <Button HorizontalAlignment="Right" Margin="0 0 50 0" Height="30"  x:Name="DeleteButton"  Width="50" Content="Удалить" Grid.Column="1"></Button>
-                                <Button  HorizontalAlignment="Right"   Margin="0 0 0 0" Height="30" Width="50" Content="Редактировать" Click="EditButton_Click" Grid.Column="1" x:Name="EditButton" ></Button>
+                               
 
                                 <TextBlock 
-                        Text="{Binding Salary}" 
+                        Text="{Binding Price}" 
                         Grid.Column="2" 
                         HorizontalAlignment="Right" 
                         Margin="10"/>
@@ -222,11 +225,11 @@ https://github.com/nikitaIZERGIN/kyrs
                                         <TextBlock 
                                 Text=" | "/>
                                         <TextBlock 
-                                Text="{Binding Role1.Title}"/>
+                                Text="{Binding RoleNikit.Title}"/>
                                     </StackPanel>
 
                                     <TextBlock 
-                            Text="{Binding Achievements}" 
+                            Text="Образование:" 
                             Grid.Row="1"/>
                                     <TextBlock 
                             Text="{Binding Education}" 
@@ -247,7 +250,7 @@ https://github.com/nikitaIZERGIN/kyrs
                             Value="True">
                                 <Setter
                                 Property="Background"
-                                Value="LightCoral"/>
+                                Value="LightGreen"/>
                             </DataTrigger>
                         </Style.Triggers>
                         <Setter 
@@ -269,49 +272,47 @@ https://github.com/nikitaIZERGIN/kyrs
 #### Пример Логики главной страницы:
 
 ```cs
-namespace KusrGalimulin
+namespace IzerginKurs
 {
-    public partial class Service
+    public partial class ServiceNikita
     {
         public Uri ImagePreviewService
         {
             get
             {
-                var imageName = System.IO.Path.Combine(Environment.CurrentDirectory, фото ?? "");
+                var imageName = System.IO.Path.Combine(Environment.CurrentDirectory, Photo ?? "");
                 return System.IO.File.Exists(imageName) ? new Uri(imageName) : new Uri("pack://application:,,,/img/picture.jpg");
             }
         }
     }
-    public partial class User
+    public partial class UserNikit
     {
         public Boolean MinSalary
         {
             get
             {
-                return Salary < 40000;
+                return Price > 30000;
             }
         }
         public string Users
         {
-
             get
-
             {
-                return LastName + "" + FirstName + "" + MiddleName;
-            } 
+                return FirstName + "" + LastName + "" + MiddleName;
+            }
         }
         public double DiscountFloat
         {
             get
             {
-                return Convert.ToSingle(Salary);
+                return Convert.ToSingle(Price);
             }
         }
         public Uri ImagePreview
         {
             get
             {
-                var imageName = System.IO.Path.Combine(Environment.CurrentDirectory, img ?? "");
+                var imageName = System.IO.Path.Combine(Environment.CurrentDirectory, Photo ?? "");
                 return System.IO.File.Exists(imageName) ? new Uri(imageName) : new Uri("pack://application:,,,/img/picture.jpg");
             }
         }
@@ -325,13 +326,13 @@ namespace KusrGalimulin
         {
             InitializeComponent();
             this.DataContext = this;
-            UserList = Core1.DB.User.ToList();
+            UserList = Core.DB.UserNikit.ToList();
         }
-        private List<User> _UserList;
+        private List<UserNikit> _UserList;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public List<User> UserList
+        public List<UserNikit> UserList
         {
             get
             {
@@ -340,7 +341,8 @@ namespace KusrGalimulin
                 var FilteredServiceList = _UserList.FindAll(item =>
                    item.DiscountFloat >= CurrentDiscountFilter.Item1 &&
                      item.DiscountFloat < CurrentDiscountFilter.Item2
-                     && item.Role1.id == 2);
+                     
+                     );
 
                 if (SearchFilter != "")
                     FilteredServiceList = FilteredServiceList.Where(item =>
@@ -350,14 +352,14 @@ namespace KusrGalimulin
                 if (SortPriceAscending)
                 {
 
-                    return FilteredServiceList.OrderBy(item => (item.Salary))
+                    return FilteredServiceList.OrderBy(item => (item.Price))
                 .ToList();
 
                 }
                 else
                 {
 
-                    return FilteredServiceList.OrderByDescending(item => (item.Salary))
+                    return FilteredServiceList.OrderByDescending(item => (item.Price))
                 .ToList();
                 }
             }
@@ -392,12 +394,7 @@ namespace KusrGalimulin
             SortPriceAscending = (sender as RadioButton).Tag.ToString() == "1";
         }
 
-        private void ServiceShow_Click(object sender, RoutedEventArgs e)
-        {
-            var isServiceShow = new windows.ServiceWidnow();
-            isServiceShow.ShowDialog();
-        }
-
+       
         public List<string> FilterByDiscountNamesList
         {
             get
@@ -481,19 +478,19 @@ namespace KusrGalimulin
         {
             get
             {
-                return _UserList.FindAll(item => item.Role1.id == 2).Count;
+                return _UserList.Count;
             }
         }
         private void AddService_Click(object sender, RoutedEventArgs e)
         {
             //  создаем новую услугу
-            var NewService = new User();
+            var NewService = new UserNikit();
 
-            var NewServiceWindow = new windows.UserWindow(NewService);
+            var NewServiceWindow = new windows.UserWindowxaml(NewService);
             if ((bool)NewServiceWindow.ShowDialog())
             {
                 //список услуг нужно перечитать с сервера
-                UserList = Core1.DB.User.ToList();
+                UserList = Core.DB.UserNikit.ToList();
                 PropertyChanged(this, new PropertyChangedEventArgs("UserList"));
                 PropertyChanged(this, new PropertyChangedEventArgs("FilteredProductsCount"));
                 PropertyChanged(this, new PropertyChangedEventArgs("ProductsCount"));
@@ -501,23 +498,37 @@ namespace KusrGalimulin
         }
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-           
-            var item = ProductListView.SelectedItem as User;
+          
+            var item = ProductListView.SelectedItem as UserNikit;
+            if (item == null)
+            {
+                MessageBox.Show("Не выбран клиент");
+                return;
+            }
 
-            
-            Core1.DB.User.Remove(item);
+
+
+
+
+            Core.DB.UserNikit.Remove(item);
 
             // сохраняем изменения
-            Core1.DB.SaveChanges();
+            Core.DB.SaveChanges();
 
-            // перечитываем изменившийся список, не забывая в сеттере вызвать PropertyChanged
-            UserList = Core1.DB.User.ToList();
+            
+            UserList = Core.DB.UserNikit.ToList();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var SelectedService = ProductListView.SelectedItem as User;
-            var EditServiceWindow = new windows.UserWindow(SelectedService);
+            var SelectedService = ProductListView.SelectedItem as UserNikit;
+            if (SelectedService == null)
+            {
+                MessageBox.Show("Не выбран");
+                return;
+            }
+
+            var EditServiceWindow = new windows.UserWindowxaml(SelectedService);
             if ((bool)EditServiceWindow.ShowDialog())
             {
                 // при успешном завершении не забываем перерисовать список услуг
@@ -526,19 +537,21 @@ namespace KusrGalimulin
             }
         }
 
-
-
-
+        private void ServiceShow_Click(object sender, RoutedEventArgs e)
+        {
+            var openServiceNikit = new windows.ServiceWindow();
+            openServiceNikit.ShowDialog();
+        }
     }
 }
+
 
 ```
 
 
 #### Прмер кода разметки страницы редактирования и добавления услуг:
 ```xml
-      Title="UserWindow" Height="650" Width="800">
-    <Grid>
+     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition  Width="*"/>
@@ -547,8 +560,8 @@ namespace KusrGalimulin
         <Image 
                 Grid.Column="0"
             VerticalAlignment="Top"
-           MaxHeight="200" 
-           MaxWidth="200" 
+          MaxWidth="200"
+            MaxHeight="200"
            Source="{Binding CurrentUser.ImagePreview}" />
 
         <StackPanel Grid.Column="1" Orientation="Horizontal" Visibility="{Binding NewProduct}">
@@ -563,52 +576,72 @@ namespace KusrGalimulin
             <Label Content="Отчество"/>
             <TextBox Text="{Binding CurrentUser.MiddleName}"/>
             <Label Content="Зарплата"/>
-            <TextBox Text="{Binding CurrentUser.Salary}"/>
-            <Label Content="Рейтинг"/>
-            <TextBox Text="{Binding CurrentUser.Rate}"/>
-            <Label Content="Достижения"/>
-            <TextBox Text="{Binding CurrentUser.Achievements}"/>
+            <TextBox Text="{Binding CurrentUser.Price}"/>
+           
+            
             <Label Content="Образование"/>
-            <TextBox Text="{Binding CurrentUser.Education}"/>
+            <ComboBox
+                     Name="DiscountFilterComboBox"
+                        SelectedIndex="0"
+                       SelectedItem="{Binding CurrentUser.Education}"
+                         ItemsSource="{Binding ListEducaitonValue}"/>
             <Label Content="Телефон"/>
             <TextBox Text="{Binding CurrentUser.Phone}"/>
             <Label Content="Email"/>
             <TextBox Text="{Binding CurrentUser.Email}"/>
             <Label Content="Год рождения"/>
-            <TextBox Text="{Binding CurrentUser.BirthName}"/>
-            
+            <TextBox Text="{Binding CurrentUser.BirthDate}"/>
 
 
 
 
-            <Button Width="100" Margin="5" HorizontalAlignment="Left" Click="GetImageButton_Click">Выбор картинки</Button>
-            <Button Width="100" Margin="5" HorizontalAlignment="Left" Click="SaveButton_Click">Сохранить</Button>
+
+            <Button Width="800" Margin="5" HorizontalAlignment="Left" Click="GetImageButton_Click">Выбор картинки</Button>
+            <Button Width="800" Margin="5" HorizontalAlignment="Left" Click="SaveButton_Click">Сохранить</Button>
         </StackPanel>
     </Grid>
     ```
 #### Пример Логики страницы редактирования заказов:
 
 ```cs
-namespace KusrGalimulin.windows
+namespace IzerginKurs.windows
 {
     /// <summary>
-    /// Логика взаимодействия для UserWindow.xaml
+    /// Логика взаимодействия для UserWindowxaml.xaml
     /// </summary>
-    public partial class UserWindow : Window, INotifyPropertyChanged
+    public partial class UserWindowxaml : Window, INotifyPropertyChanged
     {
-        public UserWindow(User user)
+
+        public List<string> ListEducaitonValue
+        {
+            get
+            {
+                return ListEducation
+                    .Select(item => item.Item1)
+                    .ToList();
+            }
+        }
+
+        private List<Tuple<string, string>> ListEducation =
+            new List<Tuple<string, string>>()
+            {
+                Tuple.Create("Среднее","Среднее"),
+         Tuple.Create("Высшее","Высшее"),
+         Tuple.Create("Среднее Специальное","Среднее Специальное"),
+
+            };
+        public UserWindowxaml(UserNikit user)
         {
             InitializeComponent();
             this.DataContext = this;
             CurrentUser = user;
-
         }
-        public User CurrentUser { get; set; }
+        public UserNikit CurrentUser { get; set; }
         public string WindowName
         {
             get
             {
-                return CurrentUser.id == 0 ? "Новая услуга" : "Редоктирование улсгуи";
+                return CurrentUser.Id == 0 ? "Новая услуга" : "Редоктирование улсгуи";
             }
         }
 
@@ -625,7 +658,7 @@ namespace KusrGalimulin.windows
             {
                 // перед присвоением пути к картинке обрезаем начало строки, т.к. диалог возвращает полный путь
                 // (тут конечно еще надо проверить есть ли в начале Environment.CurrentDirectory)
-                CurrentUser.img = GetImageDialog.FileName.Substring(Environment.CurrentDirectory.Length + 1);
+                CurrentUser.Photo = GetImageDialog.FileName.Substring(Environment.CurrentDirectory.Length + 1);
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("CurrentUser"));
@@ -634,29 +667,25 @@ namespace KusrGalimulin.windows
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentUser.Salary <= 0 || CurrentUser.Salary > 1000000)
+            if (CurrentUser.Price <= 0 || CurrentUser.Price > 1000000)
             {
                 MessageBox.Show("Зарплата не может быть меньше или равно нулю или больше 1000000");
                 return;
             }
 
-            if (CurrentUser.Rate < 0 || CurrentUser.Rate > 10)
-            {
-                MessageBox.Show("Рейтинг долджен быть от 1 до 10");
-                return;
-            }
+           
 
 
 
-            CurrentUser.Role = 2;
+           
             // если запись новая, то добавляем ее в список
-            if (CurrentUser.id == 0)
-                Core1.DB.User.Add(CurrentUser);
+            if (CurrentUser.Id == 0)
+                Core.DB.UserNikit.Add(CurrentUser);
 
             // сохранение в БД
             try
             {
-                Core1.DB.SaveChanges();
+                Core.DB.SaveChanges();
             }
             catch
             {
@@ -667,15 +696,14 @@ namespace KusrGalimulin.windows
         {
             get
             {
-                if (CurrentUser.id == 0) return "collapsed";
+                if (CurrentUser.Id == 0) return "collapsed";
                 return "visible";
 
 
 
             }
         }
-    
-}
+    }
 }
 
 ```
@@ -701,15 +729,7 @@ namespace GalimulinKursTest
             else
                 return "Все правильно";
          }
-          public string SalaryNotNull(int salary)
-        {
-            if (Rate <= 0 || Rate > 10)
-            {
-                return "рейтинг не может быть меньше или больше 10";
-            }
-            else
-                return "Все правильно";
-         }
+         
          
 
     }
@@ -740,11 +760,8 @@ namespace UniTestKurs
         {
             Assert.AreEqual(disk__price.SalaryNotNull(-2), "цена не может быть меньше или равана нулю  или больше 100000");
         }
-        [TestMethod]
-        public void RateNotNull()
-        {
-            Assert.AreEqual(disk__price.RateNotNull(22), "рейтинг не может быть меньше или больше 10");
-        }
+        
+       
         
     }
 }

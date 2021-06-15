@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Games\kyrs\IzerginKurs\IzerginKurs\obj\Debug\
+C:\Game\NIkita\IzerginKurs\IzerginKurs\obj\Debug\
 IzerginKurs
 none
 false
 DEBUG;TRACE
-C:\Games\kyrs\IzerginKurs\IzerginKurs\App.xaml
+C:\Game\NIkita\IzerginKurs\IzerginKurs\App.xaml
 4956197129
 21750853300
-17-816387141
-18269573987
+1625972226
+18-1385364260
 MainWindow.xaml;windows\ServiceNikit.xaml;windows\ServiceWindow.xaml;windows\UserWindowxaml.xaml;
 
-True
+False
 

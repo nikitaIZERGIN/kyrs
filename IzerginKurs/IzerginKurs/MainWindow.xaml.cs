@@ -264,6 +264,12 @@ namespace IzerginKurs
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             var SelectedService = ProductListView.SelectedItem as UserNikit;
+            if (SelectedService == null)
+            {
+                MessageBox.Show("Не выбран");
+                return;
+            }
+
             var EditServiceWindow = new windows.UserWindowxaml(SelectedService);
             if ((bool)EditServiceWindow.ShowDialog())
             {
